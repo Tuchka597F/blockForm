@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <mete charset="utf-8"/>
+    <title>TEST</title>
+    <link rel="stylesheet" href="test.css" />
+
+</head>
+<body>
+       <div class="blockForm">
+
+        <form name="data" action="database" method="post" >
+            Имя:<input type="text" id='0' name="имя" required pattern="^[а-яА-ЯёЁa-zA-Z]+$" /><br /><br />
+            Фамилия:<input type="text" id='1' name="фамилия" pattern="^[а-яА-ЯёЁa-zA-Z]+$" required /><br /><br />
+            Отчество :<input type="text" id='2' name="отчество" pattern="^[а-яА-ЯёЁa-zA-Z]+$" required /> <br /><br />
+            Адрес :<input type="text" id='3' name="адрес" pattern="^[а-яА-ЯёЁa-zA-Z0-9]+$" required /> <br /><br />
+            mail :<input type="email" id='4' name="mail" required pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$" /> <br /> <br />
+            телефон :<input type="number" id='5' name="телефон " pattern="^(([0-9]){10})$" required /> <br /><br />
+            <input type="submit" onclick="createTable(table,6,2)"  name="submit" class="b1" value="отпаравить"/>
+        </form>
+    </div>
+
+    <div id='tabl'></div>
+    <script>
+        
+        var table = document.querySelector('#tabl')
+        function createTable(parent, rows, cols) {
+            document.getElementById("tabl").innerHTML = "";
+            var table = document.createElement('table');
+            
+            for (var i = 0; i < rows; i++) {
+                var tr = document.createElement('tr');
+
+                for (var j = 0; j < cols; j++) {
+                    var td = document.createElement('td');
+                    if (j === 0) {
+                        td.innerHTML = document.getElementById(i).name;
+                    }
+                    else {
+                        td.innerHTML = document.getElementById(i).value;
+                    }
+                    tr.appendChild(td);
+
+                }
+
+                table.appendChild(tr);
+            }
+
+            parent.appendChild(table);
+           
+        }
+    </script>
+</body>
+</html>
